@@ -1,6 +1,7 @@
 import { HttpError } from '../../shared/utils/httpError.js';
 import { buildDeck, shuffleDeck, summarizeGame } from './game.utils.js';
 import {
+<<<<<<< HEAD
   createActiveGame,
   findCurrentGameForUser,
   findGameById,
@@ -10,6 +11,15 @@ import {
   updateActiveGame,
 } from './game.repository.js';
 import type { ActiveGame, Card, FlipRoundResponse } from './game.types.js';
+=======
+  createGame,
+  findCurrentGameForUser,
+  findGameById,
+  findGameHistoryByUserId,
+  updateGame,
+} from './game.repository.js';
+import type { Card, FlipRoundResponse, ParsedGame } from './game.types.js';
+>>>>>>> 1a4f7cf7ed0d4ff6e04d0ef79595626f860d4465
 
 interface BattleResult {
   winner: 'PLAYER' | 'COMPUTER';
@@ -91,7 +101,11 @@ const resolveBattle = (playerDeck: Card[], computerDeck: Card[]): BattleResult =
   };
 };
 
+<<<<<<< HEAD
 const finishGameIfNeeded = (game: ActiveGame): void => {
+=======
+const finishGameIfNeeded = (game: ParsedGame): void => {
+>>>>>>> 1a4f7cf7ed0d4ff6e04d0ef79595626f860d4465
   if (game.playerDeck.length === 52 || game.computerDeck.length === 0) {
     game.status = 'PLAYER_WON';
     game.finishedAt = new Date();
@@ -111,7 +125,11 @@ export const startNewGame = async (userId: number) => {
   const shuffledDeck = shuffleDeck(buildDeck());
   const playerDeck = shuffledDeck.slice(0, 26);
   const computerDeck = shuffledDeck.slice(26);
+<<<<<<< HEAD
   const newGame = await createActiveGame(userId, playerDeck, computerDeck);
+=======
+  const newGame = await createGame(userId, playerDeck, computerDeck);
+>>>>>>> 1a4f7cf7ed0d4ff6e04d0ef79595626f860d4465
 
   return summarizeGame(newGame);
 };
@@ -159,6 +177,7 @@ export const playRound = async (userId: number, gameId: number): Promise<FlipRou
   game.lastRoundResult = battleResult.message;
   finishGameIfNeeded(game);
 
+<<<<<<< HEAD
   if (game.status === 'IN_PROGRESS') {
     await updateActiveGame(game);
   } else {
@@ -166,6 +185,9 @@ export const playRound = async (userId: number, gameId: number): Promise<FlipRou
     game.id = savedGameId;
     await removeActiveGame(userId);
   }
+=======
+  await updateGame(game);
+>>>>>>> 1a4f7cf7ed0d4ff6e04d0ef79595626f860d4465
 
   return {
     ...summarizeGame(game),

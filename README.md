@@ -39,6 +39,7 @@ npm run dev
 - `GET /api/games/history`
 - `GET /api/games/:id`
 - `POST /api/games/:id/flip`
+<<<<<<< HEAD
 
 
 ## Database note
@@ -52,3 +53,5 @@ This version matches a simplified `games` table with these columns only:
 - `datetime`
 
 Because that table stores only finished-game summaries, active in-progress game state is kept in server memory until the game ends. When a match finishes, the summary is inserted into the database.
+=======
+>>>>>>> 1a4f7cf7ed0d4ff6e04d0ef79595626f860d4465
