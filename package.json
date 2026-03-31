@@ -1,0 +1,40 @@
+{
+  "name": "in-class-assignment-2-server",
+  "version": "1.0.0",
+  "description": "Server for the War card game assignment",
+  "homepage": "https://github.com/williammerusi-max/In-Class-Assignment-2-server#readme",
+  "bugs": {
+    "url": "https://github.com/williammerusi-max/In-Class-Assignment-2-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williammerusi-max/In-Class-Assignment-2-server.git"
+  },
+  "license": "ISC",
+  "author": "William Merusi",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec node --loader ts-node/esm src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.20.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.6.2",
+    "eslint-config-prettier": "^10.1.8",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
